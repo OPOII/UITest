@@ -29,6 +29,5 @@ jobs:
       if: github.event.action=='PASS'
         run: npm ci
         run: npm test
-        run:
 
       
