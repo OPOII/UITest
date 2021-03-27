@@ -22,7 +22,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Install dependencies
+      - name: Event information
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
+      - name: Handler -Dispatch response to recieved PING
+      if: github.event.action=='PASS'
         run: npm ci
-      - name: Run tests
         run: npm test
+        run:
+
+      
