@@ -27,6 +27,7 @@ jobs:
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
       - name: Handler -Dispatch response to recieved PING
       if: github.event.action=='PASS'
+        run: npm ci
         run: npm test
 
       
