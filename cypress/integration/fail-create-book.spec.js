@@ -1,5 +1,5 @@
-const bookAuthor="Slack winter";
-const bookTitle="The freedom of the wild";
+const bookAuthor="Undertale withing";
+const bookTitle="Magician reds";
 
 describe('When the user wants to add a book without the author in the author field', ()=>{
     before(()=>{
