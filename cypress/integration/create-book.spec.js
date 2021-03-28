@@ -4,7 +4,9 @@ describe('when the user wants to register a book',()=>{
     before(()=>{
         cy.visit('https://front-books-icesi.herokuapp.com');
         cy.get('#addBook').click();
+        cy.get('#name').click();
         cy.get('#name').type(bookTitle);
+        cy.get('#author').click();
         cy.get('#author').type(bookAuthor);
         cy.get('#saveButton').click();
         cy.contains('10 / page').click();
