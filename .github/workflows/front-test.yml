@@ -11,6 +11,23 @@ on:
     branches: [main]
 
 jobs:
+  build: 
+    runs-on: ubuntu-latest
+    name: create sh
+    run: sh /.build.sh
+    name: Pushes to another repository
+      id: push_directory
+      uses: OPOII/UITesty@cp_instead_of_deleting
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.FRONT_TOKEN }} 
+      with:
+        source-directory: 'output'
+        destination-github-username: 'OPOII'
+        destination-repository-name: 'books-ui'
+        commit-message: See ORIGIN_COMMIT
+      name: Test get variable exported by push-to-another-repository
+      run: npm run serve
+
   cypress-run:
 
     runs-on: ubuntu-latest
@@ -21,6 +38,7 @@ jobs:
         with:
           browser: chrome
           command: npm run test:e2e:ui:headless
+
       
 
       
