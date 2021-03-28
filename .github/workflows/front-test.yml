@@ -9,26 +9,18 @@ on:
         - '**'
   pull_request:
     branches: [main]
-  repository_dispatch:
 
 jobs:
-  build:
-      runs-on: ubuntu-latest
-      steps:
-      - name: Setup repo
-        uses: actions/checkout@v2
+  cypress-run:
 
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+    runs-on: ubuntu-latest
+    name: UI-TEST on chrome
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
         with:
-          node-version: 12.x
-      - name: Event information
-        run: |
-          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
-      - name: Handler -Dispatch response to recieved PING
-      if: github.event.action=='PASS'
-        run: npm ci
-        browser: chrome
+          browser: chrome
           command: npm run test:e2e:ui:headless
+      
 
       
