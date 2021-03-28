@@ -16,7 +16,7 @@ jobs:
     name: create sh
     run: sh /.build.sh
     name: Pushes to another repository
-      id: push_directory
+      id: OPOII/UITest
       uses: OPOII/UITesty@cp_instead_of_deleting
       env:
         API_TOKEN_GITHUB: ${{ secrets.FRONT_TOKEN }} 
